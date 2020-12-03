@@ -2,6 +2,10 @@ package day01
 
 import scala.io.Source
 
+/**
+ * https://adventofcode.com/2020/day/1
+ * Puzzle 1
+ */
 object FindTwoNumbersWhoseSumIsX {
 
   case class Solution(num1:Int, num2:Int) {
@@ -40,13 +44,13 @@ object FindTwoNumbersWhoseSumIsX {
     while(i <= lines.size-1 && j >= 0) {
       val currentSum = lines(i) + lines(j)
       if(currentSum == desiredSum)
-        return Option(Solution(lines(i), lines(j)))
+        return Some(Solution(lines(i), lines(j)))
       else if (currentSum < desiredSum)
         i = i + 1
       else
         j = j - 1
     }
-    Option.empty
+    None
   }
 
 
