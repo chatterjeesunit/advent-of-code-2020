@@ -2,7 +2,7 @@ package day10
 
 import scala.io.Source
 
-object Test {
+object Adapters {
 
   var possiblePaths: Map[Int, Int] =
     Map(
