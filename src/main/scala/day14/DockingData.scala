@@ -5,6 +5,14 @@ import scala.collection.mutable.ListBuffer
 import scala.io.Source
 /*
 https://adventofcode.com/2020/day/14
+165
+
+4886706177792
+
+208
+
+3348493585827
+
 
  */
 object DockingData {
@@ -17,13 +25,13 @@ object DockingData {
     val input2 = parseInput("day14-input02.txt")
     val input3 = parseInput("day14-input01b.txt")
 
-//    println("******* Part 1 - Test Input 1 ************")
-//    val result1 = part1(input1)
-//    println(result1)
-//
-//    println("\n******* Part 1 - Puzzle 1 Input ************")
-//    val result2 = part1(input2)
-//    println(result2)
+    println("******* Part 1 - Test Input 1 ************")
+    val result1 = part1(input1)
+    println(result1)
+
+    println("\n******* Part 1 - Puzzle 1 Input ************")
+    val result2 = part1(input2)
+    println(result2)
 
     println("\n\n******* Part 2 - Test Input 1 ************")
     val result3 = part2(input3)
@@ -87,17 +95,19 @@ object DockingData {
       line match {
         case maskRegex(m) => {
           mask = m
-          println(mask)
+//          println(mask.toList.mkString(" "))
         }
         case memRegex(pos, number) => {
           val numBinary = new ListBuffer().addAll(IntegerToBinary(pos.toLong, 36).toList)
+//          println(numBinary.mkString(" "))
           mask.zipWithIndex.foreach( c => {
             if(c._1 == 'X' || c._1 == '1') numBinary(c._2) = c._1
           })
 
           val maskedStr: String = numBinary.toList.mkString("")
-          println("\tMask = " + maskedStr)
+//          println(maskedStr.toList.mkString(" "))
           combinations(maskedStr, List("")).foreach( n => {
+//            println(s"\t\t\t\t $n : ${binaryToInteger(n)} -> ${number.toLong}")
             result.put(binaryToInteger(n), number.toLong)
           })
         }
@@ -123,7 +133,7 @@ object DockingData {
   def combinations(str: String, result: List[String]): List[String] = {
     val i = str.indexOf("X")
     if(i == -1) {
-      return result
+      return result.map(r => r + str)
     }
     val prefix = str.slice(0,i)
     val newResult = result.flatMap(r =>
