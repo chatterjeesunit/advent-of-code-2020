@@ -33,7 +33,7 @@ object ShuttleSearch {
     println("\n\n******* Part 2 - All Inputs************")
 
     val input3 = parseShuttles("day13-input03.txt")
-    input3.foreach(i => test22(i))
+    input3.foreach(i => findEarliestConsecutiveDepartures(i))
   }
 
 
@@ -49,7 +49,7 @@ object ShuttleSearch {
     println(s"Solution = ${ (time - startTime) * shuttle.busId}")
   }
 
-  private def test22(input: List[Shuttle]) = {
+  private def findEarliestConsecutiveDepartures(input: List[Shuttle]) = {
     println(input)
     var time: Long = input(0).busId
     var advanceBy:Long = time
