@@ -20,8 +20,8 @@ Sum = 185348874183674
 object EvaluateExpression {
 
   def main(args: Array[String]): Unit = {
-    val input1 = parseInput("day18-input1.txt")
-    val input2 = parseInput("day18-input2.txt")
+    val input1 = parseInput("day18-input01.txt")
+    val input2 = parseInput("day18-input02.txt")
 
     println("******* Part 1 - Test ************")
     val result1 = part1(input1)
