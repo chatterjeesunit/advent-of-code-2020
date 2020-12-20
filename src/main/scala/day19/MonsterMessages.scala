@@ -15,7 +15,7 @@ https://adventofcode.com/2020/day/19
 
 
  */
-object Test {
+object MonsterMessages {
 
   case class Rule(ruleText: Option[String], otherRules: List[List[Int]]) {
     def isRuleValid(): Boolean = ruleText.isDefined
